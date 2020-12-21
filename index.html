@@ -9,20 +9,23 @@
 <body>
     <main> 
         <header class="header">
-            Hasob Internship
+            <h1>Hasob Internship</h1>
+            <a href="#">Home</a>
         </header>
         <div class="question-wrapper">
             <p id='question-size'></p>
             <section id="question-container"></section>
         <div>
         <footer>
-            <button class="submit-btn">Submit</button>
+            <button class="submit-btn" onClick=handleSubmit()>Submit</button>
             <section><span id="progress"></span><p id='page-counter'></p></section>
         </footer>
     </main>
 
 
     <script src="./assets/js/questions.js"></script>
+    <script src="./assets/js/submit.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

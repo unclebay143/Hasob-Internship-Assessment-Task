@@ -20,8 +20,8 @@ const renderQuestions = () => {
             <div>
                 <div class='radio-container'>${options.map((option)=>{
                     return( `
-                        <div class='radio-wrapper'>
-                            <input type="radio" name=${question} value=${question}> 
+                        <div class='radio-wrapper' id='radio-wrapper'>
+                            <input type="radio" name='question1' value=${option}> 
                             <label for=${option}>${option}</label> 
                         <div>
                     `)
@@ -46,7 +46,7 @@ const renderQuestions = () => {
                 <label class='question-lead'>${question}</label>
             </div>
             <div>
-                <select>${[options.map((option)=>{
+                <select id="question2">${[options.map((option)=>{
                         return( `<option value=${option}>${option}</option> `)
                     }
                     )
@@ -73,7 +73,7 @@ const renderQuestions = () => {
                 <div class="checkbox-container">${options.map((option, index)=>{
                     return( `
                         <div class='checkbox-wrapper'>
-                            <input type="checkbox" name=${option}${index} value=${option}> 
+                            <input type="checkbox" name="question3" value=${option}> 
                             <label for=${option}>${option}</label> 
                         </div>
                     `)
@@ -89,7 +89,7 @@ const renderQuestions = () => {
         
     }
     function getUserEmail(){
-        emailContainer = `<label for='email'>4. Provide your valid email address</label> <input type='email' name='email' id='userEmail' placeholder='Enter your email address'/>`
+        emailContainer = `<label for='email'>4. Provide your valid email address</label> <input type='email' id='userEmail' placeholder='Enter your email address'/>`
         const question4Section = document.createElement('section');
         question4Section.insertAdjacentHTML('beforeend', emailContainer)
         questionContainer.appendChild(question4Section)
