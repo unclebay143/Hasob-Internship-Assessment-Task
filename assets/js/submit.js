@@ -9,7 +9,7 @@ const handleSubmit = () =>{
 
 const check = (answer, yourAnswer, remark) => {
     if(answer !== yourAnswer){
-        return remark = 'Failed'
+        return remark = 'failed'
     }else{
         return remark = 'passed'
     }
@@ -26,7 +26,7 @@ const check = (answer, yourAnswer, remark) => {
     }else{
         const yourAnswer = getQuestion1Answer.value
         if(answer !== yourAnswer){
-            remark = 'Failed'
+            remark = 'failed'
         }else{
             remark = 'passed'
         }
@@ -40,7 +40,7 @@ function handleQuestion2(){
     const getQuestion2Answer = document.getElementById('question2');
     const yourAnswer = getQuestion2Answer.options[getQuestion2Answer.selectedIndex].text;
     if(answer !== yourAnswer){
-        remark = 'Failed'
+        remark = 'failed'
     }else{
         remark = 'passed'
     }
@@ -67,7 +67,7 @@ function handleQuestion3(){
         }
     }
     if(JSON.stringify(answer) !== JSON.stringify(yourAnswer)){
-        remark = 'Failed'
+        remark = 'failed'
     }else{
         remark = 'passed'
     }
@@ -144,20 +144,25 @@ function showAttempt(){
         setTimeout(() => {
             document.getElementById('form').style.display = 'none';
             swal({
+                text: 'Generating JSON',
+                timer: 2000,
+                button: false
+            })
+            .then(()=>{swal({
                 text: 'Form submitted successfully',
                 icon: 'success',
-                buttons: 'Show Json'
-            
+                buttons: 'Show Json',
              })
-            .then(() => {
-                swal({
-                    text: JSON.stringify(get, null, 8),
-                    buttons: 'Close'
-                }).then(()=>{
-                    localStorage.removeItem('currentAnswer')
-                    window.location.reload()
-                }
-                )
+             .then(() => {
+                 swal({
+                     text: JSON.stringify(get, null, 8),
+                     buttons: 'Close'
+                    }).then(()=>{
+                        localStorage.removeItem('currentAnswer')
+                        window.location.reload()
+                    }
+                    )
+                })
             })
         }, 2000);
     }
