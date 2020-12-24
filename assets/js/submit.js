@@ -142,6 +142,7 @@ function showAttempt(){
         isSubmitting ? submitBtn.setAttribute('disabled', 'true') : null;
 
         setTimeout(() => {
+            document.getElementById('form').style.display = 'none';
             swal({
                 text: 'Form submitted successfully',
                 icon: 'success',
