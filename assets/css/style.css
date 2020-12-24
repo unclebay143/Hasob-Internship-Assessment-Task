@@ -1,8 +1,25 @@
+/* Reset */
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+.swal-overlay--show-modal .swal-modal {
+    will-change: unset;
+}
+
+.swal-button {
+    background: #335eea;
+    color: white;   
+}
+
+.swal-button:not([disabled]):hover {
+    background: #335eea;
+    color: white;   
+}
+
+
 
 /* Common */
 .question-lead{
@@ -14,24 +31,47 @@
 .header{
     background: red;
     width: 100%;
-    padding: 25px;
+    padding: 13px 39px 9px 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1{
+    color: #ffffff;
+    font-family: cursive;
+}
+
+.header a{
+    margin-right: 50px;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.header a:hover{
+    text-decoration: underline;
 }
 
 main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 #question-size{
-    padding: 23px;
+    padding-top: 23px;
     float: right;
 }
 
 
 #question-container{
+    margin-top: 50px;
     padding: 23px;
+    border: 1px solid rgb(184, 125, 125);
+    border-radius: 5px;
 }
 
 #question-container section{
@@ -132,6 +172,8 @@ footer{
     align-items: center;
     padding: 12px;
     margin: 0px 35px 30px 35px;
+    border: 1px solid rgb(184, 125, 125);
+    border-top: none;
 }
 
 .submit-btn{
@@ -140,12 +182,57 @@ footer{
     background: #008CBA;
     color: #ffffff;
     font-size: 16px;
-    border-radius: 2px ;
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    opacity: 0.8;
+    font-family: cursive;
+}
+
+.submit-btn:hover{
+    opacity: 1;
 }
 
 #progress{
     height: 10px;
-    width: 70px;
+    width: 79px;
     display: block;
     background: green;
+}
+
+#page-counter{
+    font-family: cursive;
+}
+
+
+@media(max-width: 600px){
+    *{
+        font-family: sans-serif !important;
+    }
+
+    .header a{
+        display: none;
+    }
+
+    #question-container{
+        margin: 10px;
+        border: none;
+    }
+
+    #question-size{
+        margin: 0px 11px;
+    }
+
+    .question-lead{
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .question-with-radio,
+    .checkbox-wrapper
+    
+    {
+        font-size: 15px;
+        white-space: nowrap;
+    }
 }
