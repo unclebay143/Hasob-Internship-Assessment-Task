@@ -21,8 +21,8 @@ const renderQuestions = () => {
                 <div class='radio-container'>${options.map((option)=>{
                     return( `
                         <div class='radio-wrapper' id='radio-wrapper'>
-                            <input type="radio" name='question1' value=${option}> 
-                            <label for=${option}>${option}</label> 
+                            <input type="radio" name='question1' value='${option}'> 
+                            <label for='${option}'>${option}</label> 
                         <div>
                     `)
                     }
@@ -47,7 +47,7 @@ const renderQuestions = () => {
             </div>
             <div>
                 <select id="question2">${[options.map((option)=>{
-                        return( `<option value=${option}>${option}</option> `)
+                        return( `<option value='${option}'>${option}</option> `)
                     }
                     )
                     ]}
@@ -73,8 +73,8 @@ const renderQuestions = () => {
                 <div class="checkbox-container">${options.map((option, index)=>{
                     return( `
                         <div class='checkbox-wrapper'>
-                            <input type="checkbox" name="question3" value=${option}> 
-                            <label for=${option}>${option}</label> 
+                            <input type="checkbox" name="question3" value='${option}'> 
+                            <label for='${option}'>${option}</label> 
                         </div>
                     `)
                     }
@@ -93,8 +93,6 @@ const renderQuestions = () => {
         const question4Section = document.createElement('section');
         question4Section.insertAdjacentHTML('beforeend', emailContainer)
         questionContainer.appendChild(question4Section)
-
-        
     }
 
     question1()
@@ -102,6 +100,7 @@ const renderQuestions = () => {
     question3()
     getUserEmail()
 }
+
 
 
 renderQuestions()
