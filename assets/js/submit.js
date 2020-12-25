@@ -1,5 +1,5 @@
 
-let finalAnswer = JSON.parse(localStorage.getItem('currentAnswer')) || [];
+let answerTracker = JSON.parse(localStorage.getItem('currentAnswer')) || [];
 const handleSubmit = () =>{
     getEmail()
     handleQuestion3()
@@ -7,81 +7,73 @@ const handleSubmit = () =>{
     handleQuestion1()
 }
 
-const check = (answer, yourAnswer, remark) => {
-    if(answer !== yourAnswer){
-        return remark = 'failed'
-    }else{
-        return remark = 'passed'
-    }
-}
-
  function handleQuestion1(){
     const getQuestion1Answer = document.querySelector(`input[name='question1']:checked`);
-    let { answer, question, id, remark } = questions[0]
+    let { correct_answer, question, id, remark } = questions[0]
     if(getQuestion1Answer === null){
         swal({
-            text: 'Please provide an answer to question 1!',
+            text: 'Please provide an correct_answer to question 1!',
             icon: 'warning',
-        });
+        })
+            clearTimeout(handleQuestion3)
+            console.log('cancel')
     }else{
-        const yourAnswer = getQuestion1Answer.value
-        if(answer !== yourAnswer){
+        const your_answer = getQuestion1Answer.value
+        if(correct_answer !== your_answer){
             remark = 'failed'
         }else{
             remark = 'passed'
         }
-        const x1 = {answer, question, id, yourAnswer, remark}
-        finalAnswer.push(x1)
-        localStorage.setItem('currentAnswer', JSON.stringify(finalAnswer))
+        const x1 = {correct_answer, question, id, your_answer, remark}
+        answerTracker.push(x1)
+        localStorage.setItem('currentAnswer', JSON.stringify(answerTracker))
     }
 }
 function handleQuestion2(){
-    let { answer, question, id, remark } = questions[1]
+    let { correct_answer, question, id, remark } = questions[1]
     const getQuestion2Answer = document.getElementById('question2');
-    const yourAnswer = getQuestion2Answer.options[getQuestion2Answer.selectedIndex].text;
-    if(answer !== yourAnswer){
+    const your_answer = getQuestion2Answer.options[getQuestion2Answer.selectedIndex].text;
+    if(correct_answer !== your_answer){
         remark = 'failed'
     }else{
         remark = 'passed'
     }
-    const x2 = {answer, question, id, yourAnswer, remark}
-    if(yourAnswer === 'Choose...' || yourAnswer === null){
+    const x2 = {correct_answer, question, id, your_answer, remark}
+    if(your_answer === 'Choose...' || your_answer === null){
         swal({
-            text: 'Please provide an answer to question 2!',
+            text: 'Please provide an correct_answer to question 2!',
             icon: 'warning',
         })
     }else{
-        finalAnswer.push(x2)
-        localStorage.setItem('currentAnswer', JSON.stringify(finalAnswer))
+        answerTracker.push(x2)
+        localStorage.setItem('currentAnswer', JSON.stringify(answerTracker))
     }
 
 }
 
 function handleQuestion3(){
-    let { answer, question, id, remark } = questions[2];
+    let { correct_answer, question, id, remark } = questions[2];
     const getQuestion3Answer = document.getElementsByName('question3');
-    var yourAnswer = []
+    var your_answer = []
     for (let index = 0; index < getQuestion3Answer.length; index++) {
         if(getQuestion3Answer[index].checked){
-            yourAnswer.push(getQuestion3Answer[index].value)
+            your_answer.push(getQuestion3Answer[index].value)
         }
     }
-    if(JSON.stringify(answer) !== JSON.stringify(yourAnswer)){
+    if(JSON.stringify(correct_answer) !== JSON.stringify(your_answer)){
         remark = 'failed'
     }else{
         remark = 'passed'
     }
-    const x3 = { answer, question, id, yourAnswer, remark}
-    finalAnswer.push(x3)
-    localStorage.setItem('currentAnswer', JSON.stringify(finalAnswer))
-    setTimeout(() => {
-        if(yourAnswer.length == 0){
+    const x3 = { correct_answer, question, id, your_answer, remark}
+    answerTracker.push(x3)
+    // localStorage.setItem('currentAnswer', JSON.stringify(answerTracker))
+        if(your_answer.length == 0){
             swal({
-                text: 'Please provide an answer to question 3!',
+                text: 'Please provide an correct_answer to question 3!',
                 icon: 'warning',
                 })
         }
-    }, 1000);
 }
 
 
@@ -104,8 +96,8 @@ function getEmail() {
             let isSubmitting = {set: true};
         }
         sett()
-        finalAnswer.push(email.value)
-        localStorage.setItem('currentAnswer', JSON.stringify(finalAnswer))
+        answerTracker.push(email.value)
+        localStorage.setItem('currentAnswer', JSON.stringify(answerTracker))
         swal({
             title: "Are you sure?",
             text: "Record Cannot be edit after submission",
